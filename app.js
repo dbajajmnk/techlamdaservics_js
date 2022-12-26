@@ -3,13 +3,14 @@ import express from 'express';
 import dbConnect from './db/dbConnect.js'
 import studentRouter from './routers/studentRouter.js'
 
-import createStudent from './model/Student.js'
+import {createMultiplyValues} from './model/Student.js'
 import cors from 'cors';
 dotenv.config();
 const PORT = process.env.PORT 
 const DATABASE_URL = process.env.DATA_BASE_URL || "";
 dbConnect(DATABASE_URL)  
-createStudent();
+//createStudent();
+createMultiplyValues();
 const app = express();
 app.get("/",(req,res)=>{
     res.send("Hello Friends");

@@ -36,5 +36,53 @@ const createStudent = async ()=>
 
 }
 
-export default createStudent;
+const createMultiplyValues = async ()=>
+{
+        try {
+            const newStudent1 = new Student({name:"Deepak",
+            age:39,
+            email:"Aayu Bajaj",
+            phoneNumber:9311616298,
+            address:{locality:"Anant Raj Maceo,91",city:"Gurugram",state:"Haryana",country:"India",pin:122055},
+            posts:[{title:"First Post",description:"Good Friends"}],
+            keywords:["Java","Kotlin","Node Js"],
+            comments:[{rating:5,title:"Good Teacher",message:"Good Student"}]});
+            const newStudent2 = new Student({name:"Deepak",
+            age:39,
+            email:"Deepika Bajaj",
+            phoneNumber:9311616298,
+            address:{locality:"Anant Raj Maceo,91",city:"Gurugram",state:"Haryana",country:"India",pin:122055},
+            posts:[{title:"First Post",description:"Good Friends"}],
+            keywords:["Java","Kotlin","Node Js"],
+            comments:[{rating:5,title:"Good Teacher",message:"Good Student"}]});
+
+            const newStudent3 = new Student({name:"Deepak",
+            age:39,
+            email:"Navdeep Bajaj",
+            phoneNumber:9311616298,
+            address:{locality:"Anant Raj Maceo,91",city:"Gurugram",state:"Haryana",country:"India",pin:122055},
+            posts:[{title:"First Post",description:"Good Friends"}],
+            keywords:["Java","Kotlin","Node Js"],
+            comments:[{rating:5,title:"Good Teacher",message:"Good Student"}]});
+        
+            const newStudent4 = new Student({name:"Deepak",
+            age:39,
+            email:"Pardeep Bajaj",
+            phoneNumber:9311616298,
+            address:{locality:"Anant Raj Maceo,91",city:"Gurugram",state:"Haryana",country:"India",pin:122055},
+            posts:[{title:"First Post",description:"Good Friends"}],
+            keywords:["Java","Kotlin","Node Js"],
+            comments:[{rating:5,title:"Good Teacher",message:"Good Student"}]});
+            
+           const result = Student.insertMany([newStudent1,newStudent2,newStudent3,newStudent4]);  
+            console.log(result);
+            
+        } catch (error) {
+            console.log(error);
+            
+        }
+
+}
+
+export  {createStudent,createMultiplyValues};
 

@@ -227,6 +227,6 @@ const logicalOperators = async()=>{
     console.log(results);
 }
 
-export  {createStudent,createMultiplyValues, getAllStudents,getAllStudentsBySpecificFields,findDocById,findDocSpecificFieldsById,findDocByField,
+export  {Student,createStudent,createMultiplyValues, getAllStudents,getAllStudentsBySpecificFields,findDocById,findDocSpecificFieldsById,findDocByField,
     limitTheRecords,skipTheRecords,getDocumentCount,sortTheDocs,comparisonOperator,logicalOperators};
 

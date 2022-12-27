@@ -84,5 +84,149 @@ const createMultiplyValues = async ()=>
 
 }
 
-export  {createStudent,createMultiplyValues};
+const getAllStudents = async ()=>{
+    try
+    {
+       const results = await Student.find();
+       results.forEach((result)=>{
+        console.log(result);
+       })
+
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+   
+}
+
+/**
+ * Get document for specific fields
+ */
+const getAllStudentsBySpecificFields = async ()=>{
+    try
+    {
+        /**
+         * First Way
+         */
+      // const results = await Student.find().select('name age');// Include
+      //const results = await Student.find().select(['age','name']);// Include
+      //const results = await Student.find().select({name:1,age:1});//Include
+      /**
+       * Exludes Fields from results
+       */
+      //const results = await Student.find().select('-name -age');// Exclude
+     // const results = await Student.find().select(['-name','-age'])
+      
+   // const results = await Student.find().select({name:0,age:0})
+
+   //Without Select
+   //const results = await Student.find({},['name','age'])
+   //const results = await Student.find({},('name age'))
+   const results = await Student.find({},{name:1,age:1})
+
+
+
+
+       results.forEach((result)=>{
+        console.log(result);
+       })
+
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+   
+}
+
+
+const findDocById = async()=>
+{
+    try
+    {
+        const result = await Student.findById("63aa3ca1003a1ee98f595d03")
+    console.log(result);
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+    
+}
+
+const findDocSpecificFieldsById = async()=>
+{
+    try
+    {
+       // const result = await Student.findById("63aa3ca1003a1ee98f595d03",('name age'))
+        //const result = await Student.findById("63aa3ca1003a1ee98f595d03",['name', 'age'])
+        const result = await Student.findById("63aa3ca1003a1ee98f595d03",{name:1, age:1})
+    console.log(result);
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+    
+}
+
+const findDocByField = async()=>
+{
+    try
+    {
+       // const result = await Student.findById("63aa3ca1003a1ee98f595d03",('name age'))
+        //const result = await Student.findById("63aa3ca1003a1ee98f595d03",['name', 'age'])
+        //const result = await Student.findOne({email:"Aayu Bajaj"})
+
+        const result = await Student.find({age:39})
+        
+
+    console.log(result);
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+    
+}
+
+const limitTheRecords = async()=>{
+       // const results = await Student.find().limit(4);
+        const results = await Student.find({},null,{limit:4})
+        console.log(results.length);
+}
+
+const skipTheRecords = async()=>{
+    // const results = await Student.find().limit(4);
+     const results = await Student.find({},null,{skip:4})
+     console.log(results.length);
+}
+
+const getDocumentCount = async()=>{
+    // const results = await Student.find().limit(4);
+     const results = await Student.find().countDocuments();
+     console.log(results);
+}
+/**Sorting */
+const sortTheDocs = async()=>{
+    // const results = await Student.find().limit(4);
+     const results = await Student.find().sort({age:-1})
+     console.log(results);
+}
+
+//Apply Comparison Operator
+
+const comparisonOperator = async()=>{
+    const results =  await Student.find({age:{$gt:38}},('name age'));
+    console.log(results);
+}
+
+const logicalOperators = async()=>{
+    const results = await Student.find({$and:[{name:"Deepak"},{email:"Pardeep Bajaj"}]});
+    console.log(results);
+}
+
+export  {createStudent,createMultiplyValues, getAllStudents,getAllStudentsBySpecificFields,findDocById,findDocSpecificFieldsById,findDocByField,
+    limitTheRecords,skipTheRecords,getDocumentCount,sortTheDocs,comparisonOperator,logicalOperators};
 
